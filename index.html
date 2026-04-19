@@ -1111,13 +1111,22 @@ async function loadAll() {
 }
 
 async function loadBeats() {
+  // Try local /beats.json first (served by Netlify, no CORS issues)
+  try {
+    const res = await fetch('/beats.json?t=' + Date.now());
+    if (res.ok) {
+      beats = await res.json();
+      localStorage.setItem('pln_beats_local', JSON.stringify(beats));
+      return;
+    }
+  } catch(e) {}
+  // Fallback: raw GitHub
   if (ghCfg.user && ghCfg.repo) {
     try {
-      const url = `https://raw.githubusercontent.com/${ghCfg.user}/${ghCfg.repo}/main/beats.json?t=${Date.now()}`;
+      const url = 'https://raw.githubusercontent.com/' + ghCfg.user + '/' + ghCfg.repo + '/main/beats.json?t=' + Date.now();
       const res = await fetch(url);
       if (res.ok) {
         beats = await res.json();
-        // Also cache locally so repeat visits are instant
         localStorage.setItem('pln_beats_local', JSON.stringify(beats));
         return;
       }
