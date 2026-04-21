@@ -619,7 +619,7 @@ input[type=range].pvol::-webkit-slider-thumb { -webkit-appearance: none; width: 
       <div style="background:var(--surface);border:1px solid rgba(251,191,36,0.2);border-radius:var(--r);padding:22px 20px">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:8px">Amateur — $5</div>
         <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Ok, I see you</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">No distribution, Yes monetization, Beat stays in store, No resale.</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">No distribution, Yes monetization, Beat stays in store, No resale..</div>
       </div>
       <div style="background:var(--surface);border:1px solid rgba(148,163,184,0.2);border-radius:var(--r);padding:22px 20px">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;margin-bottom:8px">Artist — $17</div>
@@ -627,8 +627,8 @@ input[type=range].pvol::-webkit-slider-thumb { -webkit-appearance: none; width: 
         <div style="font-size:13px;color:var(--muted);line-height:1.7">Beat pulled from store, Yes distribution, Yes monetization. No resale.</div>
       </div>
       <div style="background:var(--surface);border:1px solid rgba(192,132,252,0.2);border-radius:var(--r);padding:22px 20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:8px">Artist [TIP] — $20</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Get that bag [TIP]</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:8px">Artist — $20</div>
+        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Get that bag [+TIP]</div>
         <div style="font-size:13px;color:var(--muted);line-height:1.7">Same as "Get that bag" but you support me even more!.</div>
       </div>
     </div>
@@ -1072,6 +1072,10 @@ input[type=range].pvol::-webkit-slider-thumb { -webkit-appearance: none; width: 
 /* ═══════════════════════════════════════
    CONFIG
 ═══════════════════════════════════════ */
+// ⚠️  VERCEL DEPLOYMENT: Change these credentials before going live.
+// Since this is a static file, credentials are visible in source.
+// For production, consider moving auth to a Vercel serverless function
+// and storing secrets in Vercel Environment Variables instead.
 const ADMIN = { user: 'liangfxbis@gmail.com', pass: 'ln2025' };
 
 /* ═══════════════════════════════════════
@@ -1179,6 +1183,10 @@ async function doAuth() {
   }
 
   // localStorage auth
+  // NOTE FOR VERCEL: localStorage is per-browser. User accounts created here
+  // are stored only in the visitor's own browser — they won't persist across
+  // devices or to other visitors. For shared user accounts, replace this with
+  // a backend (e.g. Vercel serverless + a database like PlanetScale or Supabase).
   const hashPass = s => btoa(encodeURIComponent(s));
   const accounts = (() => { try { return JSON.parse(localStorage.getItem('pln_accounts')||'[]'); } catch { return []; } })();
   const saveAccounts = a => localStorage.setItem('pln_accounts', JSON.stringify(a));
