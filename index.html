@@ -1289,14 +1289,14 @@ let editId = null, delId = null, nowId = null, pendingFile = null, buyId = null;
 let currentUser = null; // null | 'admin' | { id, email, name, ... }
 let authCurrentMode = 'signin';
 let wishlistIds = new Set();
-let ghCfg = { user:'', repo:'beats', token:'' };
+let ghCfg = { user:'LaceLea', repo:'beats', token:'' };
 
 /* ═══════════════════════════════════════
    LOAD
 ═══════════════════════════════════════ */
 async function loadAll() {
   // GitHub config (admin's browser only)
-  try { ghCfg = {...{repo:'beats'}, ...JSON.parse(localStorage.getItem('pln_gh')||'{}')}; } catch{}
+  try { const saved = JSON.parse(localStorage.getItem('pln_gh')||'{}'); ghCfg.token = saved.token || ''; } catch{}
 
   // Restore session
   try {
