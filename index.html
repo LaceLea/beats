@@ -52,18 +52,15 @@ header {
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 36px;
-  /* More transparent liquid glass base */
+  /* liquid glass base */
+  /* Apple liquid glass */
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.08) 0%,
-    rgba(96,165,250,0.04) 25%,
-    rgba(255,255,255,0.03) 55%,
-    rgba(147,197,253,0.05) 80%,
-    rgba(255,255,255,0.07) 100%
-  );
-  backdrop-filter: blur(24px) saturate(200%) brightness(1.1);
-  -webkit-backdrop-filter: blur(24px) saturate(200%) brightness(1.1);
-  border-bottom: 1px solid rgba(255,255,255,0.22);
+    rgba(255,255,255,0.16) 0%,
+    rgba(96,165,250,0.08) 25%,
+    rgba(255,255,255,0.06) 55%,
+    rgba(147,197,253,0.10) 80%,
+    rgba(255,255,255,0.14) 100%
   );
   backdrop-filter: blur(72px) saturate(320%) brightness(1.18) contrast(0.92);
   -webkit-backdrop-filter: blur(72px) saturate(320%) brightness(1.18) contrast(0.92);
@@ -198,16 +195,27 @@ button { font-family: var(--sans); cursor: pointer; transition: all .15s; border
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 500; padding: 8px 18px;
   border-radius: var(--r-sm); border: 1px solid transparent;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s, box-shadow .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  user-select: none;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .btn:active { transform: scale(0.97); }
+.btn-primary:active { background: linear-gradient(135deg, #60a5fa, #2563eb); box-shadow: none; }
+.btn-muted:active { background: rgba(255,255,255,0.04); }
 .btn-primary { background: linear-gradient(135deg, #60a5fa, #2563eb); color: #040b1a; font-weight: 700; border-color: rgba(96,165,250,0.5); box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 14px rgba(96,165,250,0.25); }
 .btn-primary:hover { background: var(--teal-light); box-shadow: 0 4px 20px rgba(96,165,250,0.38); }
 .btn-outline { background: transparent; color: var(--teal); border-color: var(--border2); }
 .btn-outline:hover { background: var(--teal-glow); }
 .btn-ghost { background: var(--surface); color: var(--white); border-color: var(--border); }
 .btn-ghost:hover { background: var(--surface2); }
-.btn-muted { background: transparent; color: var(--muted); border-color: var(--muted2); }
-.btn-muted:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+.btn-muted { background: rgba(255,255,255,0.01); color: var(--muted); border-color: var(--muted2); }
+.btn-muted:hover { color: var(--white); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+.btn-muted:active { background: rgba(255,255,255,0.06); }
 .btn-danger { background: transparent; color: var(--red); border-color: rgba(248,113,113,0.2); }
 .btn-danger:hover { background: rgba(248,113,113,0.08); }
 .btn-sm { font-size: 12px; padding: 7px 14px; }
@@ -270,18 +278,24 @@ button { font-family: var(--sans); cursor: pointer; transition: all .15s; border
   font-family: var(--sans); font-size: 14px; font-weight: 700;
   padding: 14px 32px; border-radius: 100px;
   background: linear-gradient(135deg, #60a5fa, #2563eb); color: #040b1a; border: none; cursor: pointer;
-  transition: all .2s; letter-spacing: 0.02em;
+  transition: background .2s, box-shadow .2s, transform .1s; letter-spacing: 0.02em;
   box-shadow: 0 8px 32px rgba(96,165,250,0.35), inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 8px rgba(29,78,216,0.2);
+  -webkit-tap-highlight-color: transparent; -webkit-appearance: none;
+  user-select: none; will-change: transform;
 }
-.hero-cta-main:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 12px 44px rgba(96,165,250,0.45), 0 4px 12px rgba(29,78,216,0.25); }
+.hero-cta-main:hover { background: linear-gradient(135deg, #93c5fd, #3b82f6); transform: translateY(-2px); box-shadow: 0 12px 44px rgba(96,165,250,0.45), 0 4px 12px rgba(29,78,216,0.25); }
+.hero-cta-main:active { background: linear-gradient(135deg, #60a5fa, #2563eb); transform: scale(0.97); box-shadow: none; }
 .hero-cta-sec {
   font-family: var(--sans); font-size: 14px; font-weight: 500;
   padding: 14px 32px; border-radius: 100px;
-  background: transparent; color: var(--white); border: 1px solid var(--border);
-  cursor: pointer; transition: all .2s; letter-spacing: 0.02em;
+  background: rgba(255,255,255,0.04); color: var(--white); border: 1px solid var(--border);
+  cursor: pointer; transition: background .2s, border-color .2s, transform .1s; letter-spacing: 0.02em;
   backdrop-filter: blur(8px);
+  -webkit-tap-highlight-color: transparent; -webkit-appearance: none;
+  user-select: none; will-change: transform;
 }
 .hero-cta-sec:hover { border-color: rgba(255,255,255,0.2); background: var(--surface2); }
+.hero-cta-sec:active { background: var(--surface2); transform: scale(0.97); }
 .hero-stats {
   display: flex; gap: 40px; margin-top: 64px; justify-content: center;
   opacity: 0; animation: fadeUp .8s .8s ease forwards;
@@ -425,7 +439,7 @@ select.sel option { background: #151a22; color: var(--white); }
 /* ── MODALS ── */
 .overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
 .overlay.open { display: flex; }
-.modal { background: rgba(8,14,28,0.45); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(16px) saturate(200%); border-radius: 20px; width: 100%; max-width: 520px; box-shadow: 0 40px 100px rgba(0,0,0,0.7); animation: mUp .22s cubic-bezier(.4,0,.2,1); overflow: hidden; max-height: 90vh; overflow-y: auto; }
+.modal { background: rgba(8,14,28,0.92); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(40px) saturate(200%); border-radius: 20px; width: 100%; max-width: 520px; box-shadow: 0 40px 100px rgba(0,0,0,0.7); animation: mUp .22s cubic-bezier(.4,0,.2,1); overflow: hidden; max-height: 90vh; overflow-y: auto; }
 @keyframes mUp { from { opacity:0; transform: translateY(14px) scale(0.98); } to { opacity:1; transform: none; } }
 .mhead { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; }
 .mtitle { font-family: var(--serif); font-size: 18px; font-weight: 700; }
@@ -464,7 +478,7 @@ select.sel option { background: #151a22; color: var(--white); }
 .lic-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
 
 /* ── BUY MODAL ── */
-.buy-box { background: rgba(8,14,28,0.45); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(16px) saturate(200%); border-radius: 20px; width: 100%; max-width: 440px; animation: mUp .22s cubic-bezier(.4,0,.2,1); overflow: hidden; }
+.buy-box { background: rgba(8,14,28,0.92); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(40px) saturate(200%); border-radius: 20px; width: 100%; max-width: 440px; animation: mUp .22s cubic-bezier(.4,0,.2,1); overflow: hidden; }
 .buy-opt { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-radius: 11px; border: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.2); cursor: pointer; transition: all .15s; margin: 0 22px; margin-bottom: 8px; }
 .buy-opt:hover { border-color: var(--border2); background: var(--teal-glow2); }
 .buy-opt-left { display: flex; flex-direction: column; gap: 3px; }
@@ -474,7 +488,7 @@ select.sel option { background: #151a22; color: var(--white); }
 .c-teal { color: var(--teal); } .c-gold { color: var(--gold); } .c-slate { color: #94a3b8; } .c-purple { color: var(--purple); }
 
 /* ── CONTACT BOX ── */
-.cbox { background: rgba(8,14,28,0.45); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(16px) saturate(200%); border-radius: 20px; width: 100%; max-width: 400px; padding: 32px 28px 24px; animation: mUp .22s cubic-bezier(.4,0,.2,1); }
+.cbox { background: rgba(8,14,28,0.92); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(40px) saturate(200%); border-radius: 20px; width: 100%; max-width: 400px; padding: 32px 28px 24px; animation: mUp .22s cubic-bezier(.4,0,.2,1); }
 .cbox-title { font-family: var(--serif); font-size: 20px; font-weight: 700; margin-bottom: 5px; }
 .cbox-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.5; }
 .clink { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: var(--r-sm); background: rgba(0,0,0,0.2); border: 1px solid var(--border); color: var(--white); font-size: 14px; font-weight: 500; text-decoration: none; transition: all .15s; margin-bottom: 8px; }
@@ -482,20 +496,24 @@ select.sel option { background: #151a22; color: var(--white); }
 .clink-ico { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
 
 /* ── AUTH BOX ── */
-.auth-box { background: rgba(8,14,28,0.45); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(16px) saturate(200%); border-radius: 22px; width: 100%; max-width: 380px; padding: 36px 30px 28px; animation: mUp .28s cubic-bezier(.4,0,.2,1); }
+.auth-box { background: rgba(8,14,28,0.92); border: 1px solid rgba(96,165,250,0.22); backdrop-filter: blur(40px) saturate(200%); border-radius: 22px; width: 100%; max-width: 380px; padding: 36px 30px 28px; animation: mUp .28s cubic-bezier(.4,0,.2,1); }
 .auth-logo { font-family: var(--serif); font-size: 22px; font-weight: 700; margin-bottom: 3px; }
 .auth-logo em { color: var(--teal); font-style: normal; }
 .auth-sub { font-size: 13px; color: var(--muted); margin-bottom: 26px; }
 .auth-tabs { display: flex; gap: 0; border-radius: 8px; background: rgba(0,0,0,0.3); padding: 3px; margin-bottom: 22px; }
-.auth-tab { flex: 1; font-size: 13px; font-weight: 600; padding: 8px; border-radius: 6px; border: none; background: transparent; color: var(--muted); cursor: pointer; transition: all .15s; font-family: var(--sans); }
+.auth-tab { flex: 1; font-size: 13px; font-weight: 600; padding: 8px; border-radius: 6px; border: none; background: rgba(255,255,255,0.01); color: var(--muted); cursor: pointer; transition: background .15s, color .15s, box-shadow .15s, transform .1s; font-family: var(--sans); -webkit-tap-highlight-color: transparent; -webkit-appearance: none; user-select: none; }
+.auth-tab:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+.auth-tab:active { transform: scale(0.97); background: rgba(255,255,255,0.08); }
 .auth-tab.on { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: #040b1a; box-shadow: 0 2px 10px rgba(96,165,250,0.35); }
+.auth-tab.on:active { background: linear-gradient(135deg, #60a5fa, #3b82f6); box-shadow: none; transform: scale(0.97); }
 .auth-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
 .auth-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); }
 .auth-input { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.09); color: var(--white); font-family: var(--sans); font-size: 14px; padding: 12px 14px; border-radius: var(--r-sm); outline: none; width: 100%; transition: border-color .15s; }
 .auth-input:focus { border-color: rgba(96,165,250,0.55); box-shadow: 0 0 0 3px rgba(96,165,250,0.12); }
 .auth-input::placeholder { color: var(--muted); }
 .auth-err { font-size: 12px; color: var(--red); min-height: 16px; margin-bottom: 8px; }
-.auth-btn { width: 100%; padding: 13px; background: linear-gradient(135deg, #60a5fa, #2563eb); color: #040b1a; font-family: var(--sans); font-size: 14px; font-weight: 700; border: none; border-radius: var(--r-sm); cursor: pointer; transition: background .15s, box-shadow .15s; }
+.auth-btn { width: 100%; padding: 13px; background: linear-gradient(135deg, #60a5fa, #2563eb); color: #040b1a; font-family: var(--sans); font-size: 14px; font-weight: 700; border: none; border-radius: var(--r-sm); cursor: pointer; transition: background .15s, box-shadow .15s, transform .1s; -webkit-tap-highlight-color: transparent; -webkit-appearance: none; user-select: none; will-change: transform; }
+.auth-btn:active { transform: scale(0.97); background: linear-gradient(135deg, #60a5fa, #2563eb); box-shadow: none; }
 .auth-btn:hover { background: linear-gradient(135deg, #93c5fd, #3b82f6); box-shadow: 0 6px 24px rgba(96,165,250,0.4); }
 
 /* ── CONFIRM ── */
@@ -505,7 +523,7 @@ select.sel option { background: #151a22; color: var(--white); }
 .conf-btns { display: flex; gap: 8px; justify-content: center; }
 
 /* ── PLAYER ── */
-.player { position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: rgba(4,8,22,0.45); border-top: 1px solid rgba(96,165,250,0.20); backdrop-filter: blur(16px) saturate(220%); -webkit-backdrop-filter: blur(16px) saturate(220%); height: 70px; display: flex; align-items: center; padding: 0 28px; gap: 22px; transform: translateY(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); }
+.player { position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: rgba(4,8,22,0.92); border-top: 1px solid rgba(96,165,250,0.20); backdrop-filter: blur(40px) saturate(220%); -webkit-backdrop-filter: blur(40px) saturate(220%); height: 70px; display: flex; align-items: center; padding: 0 28px; gap: 22px; transform: translateY(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); }
 .player.up { transform: translateY(0); }
 .player::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(96,165,250,0.25) 28%, rgba(147,197,253,0.55) 50%, rgba(96,165,250,0.25) 72%, transparent); pointer-events: none; }
 .p-info { min-width: 0; flex: 0 0 190px; }
@@ -528,12 +546,7 @@ input[type=range].pvol::-webkit-slider-thumb { -webkit-appearance: none; width: 
 
 /* ── TOASTS ── */
 .toasts { position: fixed; bottom: 84px; right: 22px; z-index: 600; display: flex; flex-direction: column; gap: 7px; pointer-events: none; }
-.toast {
-  background: rgba(4,10,28,0.45);
-  backdrop-filter: blur(12px) saturate(200%);
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 8px 32px rgba(0,0,30,0.5);
-}
+.toast { background: rgba(18,24,32,0.96); border: 1px solid var(--border); color: var(--white); font-size: 12px; padding: 9px 15px; border-radius: 9px; backdrop-filter: blur(12px); display: flex; align-items: center; gap: 8px; animation: tIn .2s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
 .toast.ok { border-color: rgba(45,212,191,0.3); }
 .toast.err { border-color: rgba(248,113,113,0.3); }
 .tdot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
@@ -751,12 +764,72 @@ select.sel option { background: #0a0f2a; }
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(96,165,250,0.06) 0%, rgba(59,130,246,0.03) 40%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(96,165,250,0.09) 0%, rgba(59,130,246,0.04) 40%, transparent 70%);
   pointer-events: none;
+  filter: blur(60px);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 340px 180px at 18% 72%, rgba(96,165,250,0.055) 0%, transparent 70%),
+    radial-gradient(ellipse 280px 200px at 82% 28%, rgba(147,197,253,0.045) 0%, transparent 70%),
+    radial-gradient(ellipse 200px 280px at 65% 80%, rgba(59,130,246,0.035) 0%, transparent 70%);
+  animation: heroBlobs 12s ease-in-out infinite alternate;
+}
+@keyframes heroGlow {
+  from { opacity: 0.7; transform: translateX(-55%) scaleX(0.88) scaleY(0.92); }
+  to   { opacity: 1;   transform: translateX(-45%) scaleX(1.12) scaleY(1.08); }
+}
+@keyframes heroBlobs {
+  from { opacity: 0.6; transform: scale(0.95) translateX(-1%); }
+  to   { opacity: 1;   transform: scale(1.05) translateX(1%); }
+}
+/* liquid orb left */
+.hero-orb-l {
+  position: absolute; pointer-events: none;
+  width: 320px; height: 320px; border-radius: 50%;
+  left: -80px; top: 20%;
+  background: radial-gradient(ellipse, rgba(96,165,250,0.07) 0%, transparent 70%);
+  filter: blur(50px);
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+/* liquid orb right */
+.hero-orb-r {
+  position: absolute; pointer-events: none;
+  width: 260px; height: 260px; border-radius: 50%;
+  right: -60px; bottom: 18%;
+  background: radial-gradient(ellipse, rgba(147,197,253,0.06) 0%, transparent 70%);
   filter: blur(40px);
+  animation: orbFloat 13s ease-in-out infinite alternate-reverse;
+}
+@keyframes orbFloat {
+  from { transform: translateY(0px) scale(1); }
+  to   { transform: translateY(-30px) scale(1.08); }
+}
+/* liquid shimmer border at bottom of hero */
+.hero-shimmer {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(96,165,250,0.0) 10%,
+    rgba(96,165,250,0.35) 30%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(147,197,253,0.35) 70%,
+    rgba(96,165,250,0.0) 90%,
+    transparent 100%
+  );
+  animation: shimmerSlide 6s ease-in-out infinite alternate;
+}
+@keyframes shimmerSlide {
+  from { opacity: 0.5; transform: scaleX(0.7); }
+  to   { opacity: 1;   transform: scaleX(1); }
 }
 
 </style>
@@ -780,6 +853,9 @@ select.sel option { background: #0a0f2a; }
 </header>
 
 <section class="hero" id="hero-section">
+  <div class="hero-orb-l"></div>
+  <div class="hero-orb-r"></div>
+  <div class="hero-shimmer"></div>
   <div class="hero-title" style="font-size:clamp(52px,10vw,108px);letter-spacing:-0.04em;animation:fadeUp .8s .35s ease forwards;opacity:0"><span class="hero-ln-text">LN <em style='font-style:normal;color:var(--teal);animation:glowPulse 3s ease-in-out infinite;'>✦</em> SHOP</span></div>
   <div class="hero-ctas">
     <button class="hero-cta-main" onclick="document.getElementById('store-section').scrollIntoView({behavior:'smooth'})">Browse Beats</button>
@@ -820,31 +896,228 @@ select.sel option { background: #0a0f2a; }
   <div id="page-licenses" class="page" style="display:none">
     <div class="sec-eyebrow">How it works</div>
     <div class="sec-title">License Types</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:40px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:8px">Starter — $2</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Dabbling in the arts</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">No distribution, No monetization. Beat stays in store, No resale.</div>
+
+    <style>
+      .lic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 14px;
+        margin-bottom: 32px;
+        align-items: start;
+      }
+      .lic-tier {
+        border-radius: var(--r);
+        border: 1px solid rgba(255,255,255,0.09);
+        background: rgba(255,255,255,0.04);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform .2s, box-shadow .2s;
+      }
+      .lic-tier:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      }
+      .lic-tier.popular {
+        border-color: rgba(96,165,250,0.50);
+        background: rgba(96,165,250,0.06);
+        box-shadow: 0 0 0 1px rgba(96,165,250,0.18), 0 8px 32px rgba(96,165,250,0.10);
+      }
+      .lic-tier-header {
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+      .lic-badge {
+        display: inline-flex; align-items: center;
+        font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+        padding: 3px 9px; border-radius: 99px;
+        margin-bottom: 10px;
+      }
+      .lic-tier-name {
+        font-size: 10px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .12em; margin-bottom: 6px;
+      }
+      .lic-price {
+        font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1;
+        margin-bottom: 8px;
+      }
+      .lic-tagline {
+        font-size: 12px; color: var(--muted); line-height: 1.5;
+      }
+      .lic-features {
+        padding: 16px 20px 20px;
+        display: flex; flex-direction: column; gap: 9px;
+        flex: 1;
+      }
+      .lic-feat {
+        display: flex; align-items: flex-start; gap: 9px;
+        font-size: 12.5px; line-height: 1.4;
+      }
+      .lic-feat-icon {
+        flex-shrink: 0; margin-top: 1px;
+        width: 15px; height: 15px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .lic-feat-icon.yes { background: rgba(96,165,250,0.18); color: #60a5fa; }
+      .lic-feat-icon.no  { background: rgba(255,255,255,0.06); color: rgba(107,127,168,0.6); }
+      .lic-feat.dimmed { color: var(--muted); }
+      .lic-tier-footer {
+        padding: 0 20px 20px;
+      }
+    </style>
+
+    <div class="lic-grid">
+
+      <!-- STARTER -->
+      <div class="lic-tier">
+        <div class="lic-tier-header">
+          <div class="lic-tier-name" style="color:var(--teal)">Starter</div>
+          <div class="lic-price" style="color:var(--white)">$2</div>
+          <div class="lic-tagline">Dabbling in the arts.</div>
+        </div>
+        <div class="lic-features">
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>MP3 file</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No distribution</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No monetization</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No resale</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Beat stays in store</span>
+          </div>
+        </div>
+        <div class="lic-tier-footer">
+          <button class="btn btn-muted" style="width:100%;justify-content:center;font-size:13px" onclick="showPage('store')">Browse Beats</button>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid rgba(251,191,36,0.2);border-radius:var(--r);padding:22px 20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:8px">Amateur — $5</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Ok, I see you</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">No distribution, Yes monetization, Beat stays in store, No resale..</div>
+
+      <!-- AMATEUR -->
+      <div class="lic-tier">
+        <div class="lic-tier-header">
+          <div class="lic-tier-name" style="color:var(--gold)">Amateur</div>
+          <div class="lic-price" style="color:var(--white)">$5</div>
+          <div class="lic-tagline">Ok, I see you.</div>
+        </div>
+        <div class="lic-features">
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>MP3 file</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No distribution</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Monetization allowed</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No resale</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Beat stays in store</span>
+          </div>
+        </div>
+        <div class="lic-tier-footer">
+          <button class="btn btn-muted" style="width:100%;justify-content:center;font-size:13px" onclick="showPage('store')">Browse Beats</button>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid rgba(148,163,184,0.2);border-radius:var(--r);padding:22px 20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;margin-bottom:8px">Artist — $17</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Get that bag</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">Beat pulled from store, Yes distribution, Yes monetization. No resale.</div>
+
+      <!-- ARTIST — Most Popular -->
+      <div class="lic-tier popular">
+        <div class="lic-tier-header" style="position:relative">
+          <div style="position:absolute;top:0;right:0;background:linear-gradient(135deg,#60a5fa,#2563eb);color:#040b1a;font-size:10px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:0 var(--r) 0 var(--r-sm)">Most Popular</div>
+          <div class="lic-tier-name" style="color:#94a3b8">Artist</div>
+          <div class="lic-price" style="color:var(--white)">$17</div>
+          <div class="lic-tagline">Get that bag!</div>
+        </div>
+        <div class="lic-features">
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>WAV file</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Distribution included</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Monetization allowed</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No resale</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Beat pulled from store</span>
+          </div>
+        </div>
+        <div class="lic-tier-footer">
+          <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:13px" onclick="showPage('store')">Browse Beats</button>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid rgba(192,132,252,0.2);border-radius:var(--r);padding:22px 20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:8px">Artist — $20</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px">Get that bag [+TIP]</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">Same as "Get that bag" but you support me even more!.</div>
+
+      <!-- ARTIST + TIP -->
+      <div class="lic-tier" style="border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.05)">
+        <div class="lic-tier-header" style="position:relative">
+          <div style="position:absolute;top:0;right:0;background:linear-gradient(135deg,#a78bfa,#7c3aed);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:0 var(--r) 0 var(--r-sm)">+ Support</div>
+          <div class="lic-tier-name" style="color:var(--purple)">Artist + Tip</div>
+          <div class="lic-price" style="color:var(--white)">$20</div>
+          <div class="lic-tagline">Same as Artist but you support Lian more!</div>
+        </div>
+        <div class="lic-features">
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>WAV file</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Distribution included</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Monetization allowed</span>
+          </div>
+          <div class="lic-feat dimmed">
+            <div class="lic-feat-icon no"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>No resale</span>
+          </div>
+          <div class="lic-feat">
+            <div class="lic-feat-icon yes"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Beat pulled from store</span>
+          </div>
+          <div class="lic-feat" style="color:#a78bfa">
+            <div class="lic-feat-icon" style="background:rgba(167,139,250,0.18);color:#a78bfa"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M4 1v6M1 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span>Extra support for the producer</span>
+          </div>
+        </div>
+        <div class="lic-tier-footer">
+          <button class="btn" style="width:100%;justify-content:center;font-size:13px;background:rgba(167,139,250,0.15);color:#a78bfa;border-color:rgba(167,139,250,0.35)" onclick="showPage('store')">Browse Beats</button>
+        </div>
       </div>
+
     </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px">
-      <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:8px">Ready to purchase?</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">Take your time!, pick a beat you like!, choose your license and reach out!</div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:6px">Ready to purchase?</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6">Take your time! Pick a beat, choose your license, and reach out.</div>
+      </div>
       <button class="btn btn-primary" onclick="showPage('store')">Browse Beats</button>
     </div>
   </div>
